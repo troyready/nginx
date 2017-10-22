@@ -27,6 +27,7 @@ ohai 'reload_nginx' do
 end
 
 ohai_plugin 'nginx' do
+  path node['nginx']['custom_ohai_plugin_path'] if node['nginx']['custom_ohai_plugin_path']
   source_file 'plugins/ohai-nginx.rb.erb'
   variables binary: node['nginx']['binary']
   resource :template
